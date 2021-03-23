@@ -1,0 +1,19 @@
+POST http://localhost:5000/books 
+Content-Type: application/json
+
+{
+    "title":"hello",
+    "author":"someone"
+}
+
+###
+
+POST http://localhost:5000/people
+Content-Type: application/json
+
+{
+    "name":"pratik",
+    "age":24
+}
+
+###

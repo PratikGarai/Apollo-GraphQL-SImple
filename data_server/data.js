@@ -30,7 +30,7 @@ const Books = {
 }
 
 const People = {
-    count : 3,
+    counts : 3,
     people : [
         {
             id : 1,
