@@ -26,13 +26,15 @@ router.post('/books', (req, res) => {
         });
         Books.counts += 1;
         return res.send({
-            status : "success"
+            success : true,
+            message : "success"
         })
     }
     else 
     {
         return res.send({
-            status : "failed"
+            success : false,
+            message : "failed"
         })
     }
 })
@@ -54,13 +56,15 @@ router.post('/people', (req, res) => {
         });
         People.counts += 1;
         return res.send({
-            status : "success"
+            success : true,
+            message : "success"
         })
     }
     else 
     {
         return res.send({
-            status : "failed"
+            success : false,
+            message : "failed"
         })
     }
 })

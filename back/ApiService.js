@@ -11,18 +11,34 @@ class PeopleAPI extends RESTDataSource {
         const response = await fetch(this.baseUrl+"people");
         const res = await response.json();
         const p = Promise.all(res['data']['people'].map(person => this.personReducer(person)));
-        //console.log("P : ", p);
         return p;
     }
+
+    postNewPerson = async (obj) => {
+        const response = await fetch(this.baseUrl+"people", {
+            method : 'POST', 
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body : JSON.stringify(obj)
+        });
+        const res = await response.json();
+        return this.postNewPersonResponseReducer(res);
+    }
     
-    personReducer = (person) => {
-        const obj =  {
+    personReducer = (person) => { 
+        return {
             name : person.name, 
             age : person.age
-        }
+        };
+    }
 
-        //console.log('obj: ', obj);
-        return obj;
+    postNewPersonResponseReducer = (resp) => {
+        console.log(resp);
+        return {
+            success : resp.success,
+            message : resp.message
+        };
     }
 }
 
