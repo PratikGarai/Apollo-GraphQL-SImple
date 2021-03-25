@@ -8,7 +8,7 @@ class PeopleAPI extends RESTDataSource {
     
     getAllPeople = async () => {
         const response = await fetch(this.baseUrl+"people");
-        const res = await res.json();
+        const res = await response.json();
         console.log(res);
         return res['data']['people'].map(person => this.personReducer(person));
     }
