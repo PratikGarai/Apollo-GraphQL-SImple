@@ -1,4 +1,5 @@
 const { RESTDataSource } = require('apollo-datasource-rest');
+const fetch = require('node-fetch');
 
 class PeopleAPI extends RESTDataSource {
     constructor () {
@@ -9,15 +10,19 @@ class PeopleAPI extends RESTDataSource {
     getAllPeople = async () => {
         const response = await fetch(this.baseUrl+"people");
         const res = await response.json();
-        console.log(res);
-        return res['data']['people'].map(person => this.personReducer(person));
+        const p = Promise.all(res['data']['people'].map(person => this.personReducer(person)));
+        //console.log("P : ", p);
+        return p;
     }
     
     personReducer = (person) => {
-        return {
+        const obj =  {
             name : person.name, 
-            age : person.id
+            age : person.age
         }
+
+        //console.log('obj: ', obj);
+        return obj;
     }
 }
 

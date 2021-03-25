@@ -7,8 +7,8 @@ const typeDefs = gql`
   }
 
   type Person {
-        name : String!,
-        age : Int!
+        name : String,
+        age : Int
   }
 
   type PersonAddResponse {
@@ -18,7 +18,7 @@ const typeDefs = gql`
 
   type Query {
       books : [Book]!
-      people : [Person]!
+      people : [Person]
   }
 
   type Mutation{
